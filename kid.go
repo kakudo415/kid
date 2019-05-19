@@ -41,6 +41,19 @@ func (id ID) ToBin() string {
 	return fmt.Sprintf("%064b", id)
 }
 
+// Parse is shorthand parse funcs
+func Parse(src string) ID {
+	switch len(src) {
+	case 16:
+		return ParseHex(src)
+	case 20:
+		return ParseDec(src)
+	case 64:
+		return ParseBin(src)
+	}
+	return ID(0)
+}
+
 // ParseDec parses ID from decimal string
 func ParseDec(src string) ID {
 	id, err := strconv.ParseUint(src, 10, 64)
