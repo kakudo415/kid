@@ -38,12 +38,13 @@ const mask uint64 = 0xFFF
 func newSequenceNumber() uint64 {
 	sequenceNumber++
 	if sequenceNumber > 0xFFF {
-		sequenceNumber = 1
+		sequenceNumber = 0
 	}
 	return sequenceNumber & mask
 }
 
-// initialize
 func init() {
-	sequenceNumber = 1
+	if !time.Now().UTC().After(epoch) {
+		panic("KID ONLY WORKS AFTER 2000-1-1T00:00:00")
+	}
 }
