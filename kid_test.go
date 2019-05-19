@@ -58,3 +58,30 @@ func Test_ToBin(t *testing.T) {
 		t.Error("NUMBER OF DIGITS ISN'T 64 (Bin num)")
 	}
 }
+
+func Test_ParseDec(t *testing.T) {
+	id := New(0)
+	d := id.ToDec()
+	p := ParseDec(d)
+	if id != p {
+		t.Error("PARSE DECIMAL NUMBER ID ERROR")
+	}
+}
+
+func Test_ParseHex(t *testing.T) {
+	id := New(0)
+	d := id.ToHex(true)
+	p := ParseHex(d)
+	if id != p {
+		t.Error("PARSE HEXADECIMAL NUMBER ID ERROR")
+	}
+}
+
+func Test_ParseBin(t *testing.T) {
+	id := New(0)
+	d := id.ToBin()
+	p := ParseBin(d)
+	if id != p {
+		t.Error("PARSE BINARY NUMBER ID ERROR")
+	}
+}

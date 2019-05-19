@@ -2,6 +2,7 @@ package kid
 
 import (
 	"fmt"
+	"strconv"
 	"time"
 )
 
@@ -38,6 +39,33 @@ func (id ID) ToHex(upper bool) string {
 // ToBin (Binary number)
 func (id ID) ToBin() string {
 	return fmt.Sprintf("%064b", id)
+}
+
+// ParseDec parses ID from decimal string
+func ParseDec(src string) ID {
+	id, err := strconv.ParseUint(src, 10, 64)
+	if err != nil {
+		return ID(0)
+	}
+	return ID(id)
+}
+
+// ParseHex parses ID from hexadecimal string
+func ParseHex(src string) ID {
+	id, err := strconv.ParseUint(src, 16, 64)
+	if err != nil {
+		return ID(0)
+	}
+	return ID(id)
+}
+
+// ParseBin parses ID from decimal string
+func ParseBin(src string) ID {
+	id, err := strconv.ParseUint(src, 2, 64)
+	if err != nil {
+		return ID(0)
+	}
+	return ID(id)
 }
 
 // Timestamp [44b]
