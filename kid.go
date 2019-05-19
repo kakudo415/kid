@@ -1,6 +1,7 @@
 package kid
 
 import (
+	"fmt"
 	"time"
 )
 
@@ -19,6 +20,24 @@ func New(workerID uint64) ID {
 // IsError (ID == 0 is Error)
 func (id ID) IsError() bool {
 	return id == 0
+}
+
+// ToDec (Decimal num)
+func (id ID) ToDec() string {
+	return fmt.Sprintf("%020d", id)
+}
+
+// ToHex (Hexadecimal number)
+func (id ID) ToHex(upper bool) string {
+	if upper {
+		return fmt.Sprintf("%016X", id)
+	}
+	return fmt.Sprintf("%016x", id)
+}
+
+// ToBin (Binary number)
+func (id ID) ToBin() string {
+	return fmt.Sprintf("%064b", id)
 }
 
 // Timestamp [44b]
