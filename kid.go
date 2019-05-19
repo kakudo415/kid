@@ -13,7 +13,7 @@ func New(workerID uint64) ID {
 	if workerID > 0xFF {
 		return 0
 	}
-	return ID(newTimestamp()<<16 + newSequenceNumber()<<8 + workerID)
+	return ID(newTimestamp()<<20 + newSequenceNumber()<<8 + workerID)
 }
 
 // IsError (ID == 0 is Error)
